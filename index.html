@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task#1</title>
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <head></head>
+
+    <section class="hero">
+
+      <div class="main__container">
+        <div class="outer__card">
+          <div class="inner__card"></div>
+  
+          <div class="card__1"></div>
+          <div class="card__2">
+            <i class="bx bxs-quote-alt-left left__quote"></i>
+            <p class="quote">
+              <span id="quotes">It is the supreme art of the teacher to awaken joy in creative
+                expression and knowledge.</span><br>
+              --<span id="author">Albert Einstein</span>
+            </p>
+            <i class="bx bxs-quote-alt-right right__quote"></i>
+            
+          </div>
+          <div class="card__3"></div>
+          
+        </div>
+      </div>
+
+    </section>
+
+    <footer></footer>
+    
+
+    <script>
+      const quotes = document.getElementById("quotes");
+      const author = document.getElementById("author");
+      let realData ="";
+
+      const getNewQuotes = () => {
+        let rnum = Math.floor(Math.random() *10);
+        // console.log(rnum);
+        // console.log(realData[rnum].text);
+        // console.log(realData[rnum].author);
+        quotes.innerText = realData[rnum].text;
+        author.innerText = realData[rnum].author;
+      }
+
+
+      const getQuotes = async() => {
+        const api = "https://type.fit/api/quotes";
+        try{
+          let data = await fetch(api);
+          realData = await data.json();
+          getNewQuotes();
+          // console.log(realData[10].text);
+          // console.log(realData[10].author);
+        } catch(error){
+
+        }
+      };
+      getQuotes();
+    </script>
+  </body>
+</html>
