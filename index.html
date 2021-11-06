@@ -1,76 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Task#1</title>
-    <link
-      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./CSS/style.css" />
-    <!-- Google Site Verification: -->
-    <meta name="google-site-verification" content="81b5flZaDniGOpQLQnzAt_L1i190djxBwBDK486_w3s" />
-  </head>
-  <body>
-    <head></head>
 
-    <section class="hero">
-      <div class="main__container">
-        <div class="outer__card">
-          <div class="inner__card"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task#1</title>
+  
+  <!-- Boxicons CSS CDN -->
+  <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+  
+  <!-- CSS  -->
+  <link rel="stylesheet" href="./CSS/style.css" />
 
-          <div class="card__1"></div>
-          <div class="card__2">
-            <i class="bx bxs-quote-alt-left left__quote"></i>
-            <p class="quote">
-              <span id="quotes"
-                >It is the supreme art of the teacher to awaken joy in creative
-                expression and knowledge.</span
-              ><br />
-              --<span id="author">Albert Einstein</span>
-            </p>
-            <i class="bx bxs-quote-alt-right right__quote"></i>
-          </div>
-          <div class="card__3"></div>
+  <!-- Google Site Verification: -->
+  <meta name="google-site-verification" content="81b5flZaDniGOpQLQnzAt_L1i190djxBwBDK486_w3s" />
+
+  <!-- Meta tags: -->
+  <title>Random Quotes </title>
+  <meta name="description" content="A website for Generating Random Quotes using API">
+  <meta name="keywords" content="Quotes,Random Quotes">
+  <meta name="robots" content="index, follow">
+  <meta name="copyright" content="hkrobotics">
+  <meta name="language" content="EN">
+  <meta name="author" content="hkrobotics">
+  <meta name="creationdate" content="October 18 2021">
+  <meta name="distribution" content="global">
+  <meta name="rating" content="general">
+  <meta name="revisit-after" content="1 days">
+</head>
+
+<body>
+
+  <head></head>
+
+  <section class="hero">
+    <div class="main__container">
+      <div class="outer__card">
+        <div class="inner__card"></div>
+
+        <div class="card__1"></div>
+        <div class="card__2">
+          <i class="bx bxs-quote-alt-left left__quote"></i>
+          <p class="quote">
+            <span id="quotes">It is the supreme art of the teacher to awaken joy in creative
+              expression and knowledge.</span><br />
+            --<span id="author">Albert Einstein</span>
+          </p>
+          <i class="bx bxs-quote-alt-right right__quote"></i>
         </div>
+        <div class="card__3"></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <footer></footer>
+  <footer></footer>
 
-    <script>
-      const quotes = document.getElementById("quotes");
-      const author = document.getElementById("author");
-      let realData = "";
+  <script>
+    const quotes = document.getElementById("quotes");
+    const author = document.getElementById("author");
+    let realData = "";
 
-      const getNewQuotes = () => {
-        let rnum = Math.floor(Math.random() * realData.length);
-        // console.log(rnum);
-        // Math.floor(Math.random() * (max - min) ) + min;
-        //This JavaScript function always returns a random number between min and max (both included)
-        // console.log(realData.length);
-        console.log(
-          rnum +
-            "th quote was displayed using the API from https://type.fit/api/quotes"
-        );
-        // console.log(realData[rnum].author);
-        quotes.innerText = realData[rnum].text;
-        author.innerText = realData[rnum].author;
-      };
+    const getNewQuotes = () => {
+      let rnum = Math.floor(Math.random() * realData.length);
+      // console.log(rnum);
+      // Math.floor(Math.random() * (max - min) ) + min;
+      //This JavaScript function always returns a random number between min and max (both included)
+      // console.log(realData.length);
+      console.log(
+        rnum +
+        "th quote was displayed using the API from https://type.fit/api/quotes"
+      );
+      // console.log(realData[rnum].author);
+      quotes.innerText = realData[rnum].text;
+      author.innerText = realData[rnum].author;
+    };
 
-      const getQuotes = async () => {
-        const api = "https://type.fit/api/quotes";
-        try {
-          let data = await fetch(api);
-          realData = await data.json();
-          getNewQuotes();
-          // console.log(realData[10].text);
-          // console.log(realData[10].author);
-        } catch (error) {}
-      };
-      getQuotes();
-    </script>
-  </body>
+    const getQuotes = async () => {
+      const api = "https://type.fit/api/quotes";
+      try {
+        let data = await fetch(api);
+        realData = await data.json();
+        getNewQuotes();
+        // console.log(realData[10].text);
+        // console.log(realData[10].author);
+      } catch (error) { }
+    };
+    getQuotes();
+  </script>
+</body>
+
 </html>
